@@ -13,7 +13,7 @@ header {
 header>div {
     width: 100%;
     max-width: 1440px;
-    padding: 20px 8px;
+    padding: 20px 140px;
     display: flex;
     align-items: flex-start;
 }
@@ -35,17 +35,19 @@ h1 {
     font-weight: 800;
     font-size: 56px;
     color: #FFFFFF;
+    text-align: center;
 }
 
 footer {
     position: relative;
-    background-color: #06171E;
     width: 100%;
-    max-height: 130px;
+    height: 130px;
+    overflow: hidden;
+    background-color: #06171E;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 }
 
 .footer_wave {
@@ -54,7 +56,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     z-index: 1;
 }
 
