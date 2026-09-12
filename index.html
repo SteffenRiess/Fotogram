@@ -8,7 +8,7 @@
     <link rel="icon" href="./assets/svg/fotogram_logo.svg">
     <title>Fotogram</title>
 
-    <script src="./script.js"></script>
+    <script src="./js script/photo.js"></script>
 
     <link rel="stylesheet" href="./css/fonts.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -25,14 +25,32 @@
         <section>
             <h1>Your personal photo album</h1>
             <div id="photos"></div>
+            <dialog id="photoDialog">
+                <header>
+                    <h2>
+                        Mein Dialog
+                    </h2>
+                </header>
+
+                <section>
+                    <p>Hier siehst du die Information die ich dir Banane...</p>
+                </section>
+
+                <footer>
+                    <button onclick="closeDialog()">Schließen</button>
+                </footer>
+            </dialog>
         </section>
     </main>
     <footer>
         <img class="footer_wave" src="./assets/svg/footer_curved.svg" alt="Curved footer">
-        <div class="footer_content" >
+        <div class="footer_content">
             <img src="./assets/svg/da_logo.svg" alt="Developer Akademie logo with lettering">
         </div>
     </footer>
+
+    <script src="./js script/dialog.js"></script>
+
 </body>
 
 </html>
