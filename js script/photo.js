@@ -17,7 +17,7 @@ let arrImgs = [
 function render() {
     let fotoRef = document.getElementById("photos");
     for (let index = 0; index < arrImgs.length; index++) {
-        fotoRef.innerHTML += `  <img onclick="openDialog()" class="single_photo" src="./assets/img/${arrImgs[index]}" alt="${arrImgs[index]}">`;
+        fotoRef.innerHTML += `  <img onclick="openDialog('${arrImgs[index]}')" class="single_photo" src="./assets/img/${arrImgs[index]}" alt="${arrImgs[index]}">`;
 
     }
 };
