@@ -4,13 +4,13 @@
     box-sizing: border-box;
 }
 
-header {
+.bodyHeader {
     background-color: #09212A;
     display: flex;
     justify-content: center;
 }
 
-header>div {
+.headerLogo {
     width: 100%;
     max-width: 1440px;
     padding: 20px 140px;
@@ -18,13 +18,13 @@ header>div {
     align-items: flex-start;
 }
 
-main {
+.bodyMain {
     background-color: #06171E;
     display: flex;
     justify-content: center;
 }
 
-section {
+.mainSection {
     max-width: 1170px;
     min-height: 500px;
     margin: 160px 0px;
@@ -60,7 +60,7 @@ h1 {
     border-color: #6BC1E1;
 }
 
-footer {
+.bodyFooter {
     position: relative;
     width: 100%;
     height: 130px;
@@ -87,6 +87,26 @@ footer {
     z-index: 2;
 }
 
+#photoDialog {
+
+    background-color: #09212A;
+    min-width: 260px;
+    min-height: 260px
+}
+
+.dialogHeader {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px;
+}
+
+h2 {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
 .closeButton {
     background: none;
     border: none;
@@ -104,3 +124,11 @@ footer {
 .closeButton:active {
     background-image: url(../assets/svg/close\ button\ while\ pressing.svg);
 }
+
+.show_single_photo {
+    max-width: 600px;
+    max-height: 600px;
+    margin: 0px 24px;
+
+}
+
