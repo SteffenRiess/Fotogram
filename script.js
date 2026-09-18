@@ -25,21 +25,41 @@ function render() {
 const dialogRef = document.getElementById("photoDialog")
 const headerDiRef = document.getElementById("headerDialog")
 const sectionDiRef = document.getElementById("sectionDialog")
-
+const picNbrRef = document.getElementById("picNbr")
+const buttonBackRef = document.getElementById("buttonBack")
+const buttonNextRef = document.getElementById("buttonNext")
+let currentIndexNbr = 99;
 
 function openDialog(indexNbr) {
     dialogRef.showModal();
+    
     let photoName = arrImgs[indexNbr].slice(0, -4);
         headerDiRef.innerHTML = `<p>${photoName}</p>`;
+    
     sectionDiRef.innerHTML = `<img class="show_single_photo" src="./assets/img/${arrImgs[indexNbr]}" alt="${arrImgs[indexNbr]}">`;
-    return photoName;
+    
+    let showIndexNbr = Number(indexNbr) + 1;
+        picNbrRef.innerHTML = `<p>${showIndexNbr}/${arrImgs.length}</p>`
+    
+    if (showIndexNbr <= 1) {
+        buttonBackRef.classList.add('defaultBackButton');
+    } else {
+        buttonBackRef.classList.remove('defaultBackButton');
+    }
+    if (showIndexNbr >= arrImgs.length) {
+        buttonNextRef.classList.add('defaultNextButton');
+    } else {
+        buttonNextRef.classList.remove('defaultNextButton');
+    }
+
+    currentIndexNbr = indexNbr;
+    
 }
 
-console.log(photoName)
 
 
 function closeDialog() {
-    
+
     dialogRef.close();
 }
 

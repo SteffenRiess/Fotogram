@@ -132,3 +132,47 @@ h2 {
 
 }
 
+#picNbr>p {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.desingButton {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+}
+
+.backButton {
+    background-image: url(../assets/svg/next\ button\ Hover.svg);
+    transform: rotate(180deg);
+}
+
+.defaultBackButton {
+    background-image: url(../assets/svg/next\ button\ Default.svg);
+    transform: rotate(180deg);
+    cursor: auto;
+}
+
+.nextButton {
+    background-image: url(../assets/svg/next\ button\ Hover.svg);
+}
+
+.defaultNextButton {
+    background-image: url(../assets/svg/next\ button\ Default.svg);
+    cursor: auto;
+}
+
+#footerDialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 56px;
+    margin: 24px;
+
+}
