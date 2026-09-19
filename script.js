@@ -32,15 +32,15 @@ let currentIndexNbr = 99;
 
 function openDialog(indexNbr) {
     dialogRef.showModal();
-    
+
     let photoName = arrImgs[indexNbr].slice(0, -4);
-        headerDiRef.innerHTML = `<p>${photoName}</p>`;
-    
+    headerDiRef.innerHTML = `<p>${photoName}</p>`;
+
     sectionDiRef.innerHTML = `<img class="show_single_photo" src="./assets/img/${arrImgs[indexNbr]}" alt="${arrImgs[indexNbr]}">`;
-    
+
     let showIndexNbr = Number(indexNbr) + 1;
-        picNbrRef.innerHTML = `<p>${showIndexNbr}/${arrImgs.length}</p>`
-    
+    picNbrRef.innerHTML = `<p>${showIndexNbr}/${arrImgs.length}</p>`
+
     if (showIndexNbr <= 1) {
         buttonBackRef.classList.add('defaultBackButton');
     } else {
@@ -53,10 +53,22 @@ function openDialog(indexNbr) {
     }
 
     currentIndexNbr = indexNbr;
-    
+
 }
 
+function clickBackButton() {
+    if (currentIndexNbr > 0) {
+        currentIndexNbr--;
+        openDialog(currentIndexNbr);
+    }
+}
 
+function clickNextButton() {
+    if (currentIndexNbr < 11) {
+        currentIndexNbr++;
+        openDialog(currentIndexNbr);
+    }
+}
 
 function closeDialog() {
 
