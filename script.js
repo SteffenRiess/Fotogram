@@ -75,3 +75,17 @@ function closeDialog() {
     dialogRef.close();
 }
 
+
+dialogRef.addEventListener('click', (event) => {
+    const rect = dialogRef.getBoundingClientRect();
+    const clickedInDialog = (
+        event.clientX >= rect.left &&
+        event.clientX <= rect.right &&
+        event.clientY >= rect.top &&
+        event.clientY <= rect.bottom
+    );
+
+    if (!clickedInDialog) {
+        closeDialog();
+    }
+});
