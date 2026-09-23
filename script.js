@@ -13,6 +13,15 @@ let arrImgs = [
     "winter-1675197_1280.jpg"
 ];
 
+const dialogRef = document.getElementById("photoDialog")
+const headerDiRef = document.getElementById("headerDialog")
+const sectionDiRef = document.getElementById("sectionDialog")
+const picNumberRef = document.getElementById("picNumber")
+const buttonBackRef = document.getElementById("buttonBack")
+const buttonNextRef = document.getElementById("buttonNext")
+let dialogIsOpen = false;
+let showIndexNumber = "";
+let currentIndexNumber = 99;
 
 function render() {
     let fotoRef = document.getElementById("photos");
@@ -22,70 +31,67 @@ function render() {
     }
 };
 
-const dialogRef = document.getElementById("photoDialog")
-const headerDiRef = document.getElementById("headerDialog")
-const sectionDiRef = document.getElementById("sectionDialog")
-const picNbrRef = document.getElementById("picNbr")
-const buttonBackRef = document.getElementById("buttonBack")
-const buttonNextRef = document.getElementById("buttonNext")
-let currentIndexNbr = 99;
 
-function openDialog(indexNbr) {
+function stopBubbling(event) {
+    event.stopPropagation();
+}
+
+
+function checkDialogOpen() {
+    if (dialogIsOpen) {
+        closeDialog();
+    }
+}
+
+function openDialog(indexNumber) {
     dialogRef.showModal();
 
-    let photoName = arrImgs[indexNbr].slice(0, -4);
+    let photoName = arrImgs[indexNumber].slice(0, -4);
     headerDiRef.innerHTML = `<p>${photoName}</p>`;
 
-    sectionDiRef.innerHTML = `<img class="show_single_photo" src="./assets/img/${arrImgs[indexNbr]}" alt="${arrImgs[indexNbr]}">`;
+    sectionDiRef.innerHTML = `<img class="show_single_photo" src="./assets/img/${arrImgs[indexNumber]}" alt="${arrImgs[indexNumber]}">`;
 
-    let showIndexNbr = Number(indexNbr) + 1;
-    picNbrRef.innerHTML = `<p>${showIndexNbr}/${arrImgs.length}</p>`
+    showIndexNumber = Number(indexNumber) + 1;
+    picNumberRef.innerHTML = `<p>${showIndexNumber}/${arrImgs.length}</p>`
 
-    if (showIndexNbr <= 1) {
+    defaultButtons();
+
+    currentIndexNumber = indexNumber;
+    dialogIsOpen = true;
+
+}
+
+function defaultButtons() {
+    if (showIndexNumber <= 1) {
         buttonBackRef.classList.add('defaultBackButton');
     } else {
         buttonBackRef.classList.remove('defaultBackButton');
     }
-    if (showIndexNbr >= arrImgs.length) {
+    if (showIndexNumber >= arrImgs.length) {
         buttonNextRef.classList.add('defaultNextButton');
     } else {
         buttonNextRef.classList.remove('defaultNextButton');
     }
-
-    currentIndexNbr = indexNbr;
-
 }
 
 function clickBackButton() {
-    if (currentIndexNbr > 0) {
-        currentIndexNbr--;
-        openDialog(currentIndexNbr);
+    if (currentIndexNumber > 0) {
+        currentIndexNumber--;
+        openDialog(currentIndexNumber);
     }
 }
 
 function clickNextButton() {
-    if (currentIndexNbr < 11) {
-        currentIndexNbr++;
-        openDialog(currentIndexNbr);
+    if (currentIndexNumber < 11) {
+        currentIndexNumber++;
+        openDialog(currentIndexNumber);
     }
 }
+
+
 
 function closeDialog() {
-
     dialogRef.close();
+    dialogIsOpen = false;
+
 }
-
-
-dialogRef.addEventListener('click', (event) => {
-    const rect = dialogRef.getBoundingClientRect();
-    const clickedInDialog = (
-        event.clientX >= rect.left &&
-        event.clientX <= rect.right &&
-        event.clientY >= rect.top &&
-        event.clientY <= rect.bottom
-    );
-
-    if (!clickedInDialog) {
-        closeDialog();
-    }
-});

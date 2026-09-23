@@ -15,7 +15,7 @@
 
 </head>
 
-<body onload="render()">
+<body id="body" onload="render()" onmouseup="checkDialogOpen()">
     <header class="bodyHeader">
         <div class="headerLogo">
             <img src="./assets/svg/fotogram_name_logo.svg" alt="Fotogram logo with lettering">
@@ -25,7 +25,8 @@
         <section class="mainSection">
             <h1>Your personal photo album</h1>
             <div id="photos"></div>
-            <dialog id="photoDialog">
+            <div>
+            <dialog id="photoDialog" onclick="stopBubbling(event)">
                 <header class="dialogHeader">
                     <h2 id="headerDialog">
                     </h2>
@@ -36,11 +37,12 @@
 
                 <footer id="footerDialog">
                     <button id="buttonBack" class="desingButton backButton" onclick="clickBackButton()"></button>
-                    <div id="picNbr"></div>
+                    <div id="picNumber"></div>
                     <button id="buttonNext" class="desingButton nextButton" onclick="clickNextButton()"></button>
 
                 </footer>
             </dialog>
+            </div>
         </section>
     </main>
     <footer class="bodyFooter">
