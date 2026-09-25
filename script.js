@@ -19,27 +19,20 @@ const sectionDiRef = document.getElementById("sectionDialog")
 const picNumberRef = document.getElementById("picNumber")
 const buttonBackRef = document.getElementById("buttonBack")
 const buttonNextRef = document.getElementById("buttonNext")
-let dialogIsOpen = false;
 let showIndexNumber = "";
 let currentIndexNumber = 99;
 
 function render() {
     let fotoRef = document.getElementById("photos");
     for (let index = 0; index < arrImgs.length; index++) {
-        fotoRef.innerHTML += `  <img onclick="openDialog('${[index]}')" class="single_photo" src="./assets/img/${arrImgs[index]}" alt="${arrImgs[index]}">`;
-
+        fotoRef.innerHTML += `  <img onclick="openDialog('${[index]}')" class="single_photo" onkeydown="keyOpenDialog(event, '${[index]}')" tabindex="0" role="button" src="./assets/img/${arrImgs[index]}" alt="Picture with name ${arrImgs[index]}">`;
     }
-};
-
-
-function stopBubbling(event) {
-    event.stopPropagation();
 }
 
-
-function checkDialogOpen() {
-    if (dialogIsOpen) {
-        closeDialog();
+function keyOpenDialog(event, indexNumber) {
+    if (event.key ===  "Enter") {
+        event.preventDefault();
+        openDialog(indexNumber);
     }
 }
 
@@ -47,7 +40,7 @@ function openDialog(indexNumber) {
     dialogRef.showModal();
 
     let photoName = arrImgs[indexNumber].slice(0, -4);
-    headerDiRef.innerHTML = `<p>${photoName}</p>`;
+    headerDiRef.innerHTML = `${photoName}`;
 
     sectionDiRef.innerHTML = `<img class="show_single_photo" src="./assets/img/${arrImgs[indexNumber]}" alt="${arrImgs[indexNumber]}">`;
 
@@ -57,8 +50,6 @@ function openDialog(indexNumber) {
     defaultButtons();
 
     currentIndexNumber = indexNumber;
-    dialogIsOpen = true;
-
 }
 
 function defaultButtons() {
@@ -88,10 +79,13 @@ function clickNextButton() {
     }
 }
 
+function closeDialogBackdrop(event) {
+    if (event.target === dialogRef) {
+        closeDialog();
+    }
+}
 
 
 function closeDialog() {
     dialogRef.close();
-    dialogIsOpen = false;
-
 }
